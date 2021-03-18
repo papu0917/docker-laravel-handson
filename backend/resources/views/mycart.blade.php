@@ -10,9 +10,7 @@
                 <div class="card-body">
                     <p class="text-center">{{ $message ?? '' }}</p><br>
 
-                    {{-- 追加 --}}
                     @if ($my_carts->isNotEmpty())
-                        {{-- ここまで --}}
                         @foreach ($my_carts as $my_cart)
                             <div class="mycart_box">
                                 {{ $my_cart->stock->name }} <br>
@@ -37,11 +35,9 @@
                             <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入する</button>
                         </form>
 
-                        {{-- 追加 --}}
                     @else
                         <p class="text-center">カートはからっぽです。</p>
                     @endif
-                    {{-- ここまで --}}
                     <a href="/">商品一覧へ</a>
                 </div>
 
