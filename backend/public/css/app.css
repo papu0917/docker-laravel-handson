@@ -10988,3 +10988,6 @@ img.incart {
   margin: 20px auto;
 }
 
+.btn-rounded {
+    border-radius: 35px;
+}

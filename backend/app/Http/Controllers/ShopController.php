@@ -30,6 +30,13 @@ class ShopController extends Controller
         return view('mycart', $data)->with('message', $message);
     }
 
+    public function confirm(Cart $cart)
+    {
+        $user_id = Auth::id();
+        $data = $cart->showCart();
+        return view('confirm', $data);
+    }
+
     public function deleteCart(Request $request, Cart $cart)
     {
 
