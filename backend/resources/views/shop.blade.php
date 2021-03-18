@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <img src="image/e_sale_460_1.jpg">
+        <img src="/image/e_sale_460_1.jpg">
     </div>
     <div class="container-fluid">
         <div class="">
