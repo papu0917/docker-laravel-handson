@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+
+use function Ramsey\Uuid\v1;
 
 class ShopController extends Controller
 {
@@ -47,8 +50,9 @@ class ShopController extends Controller
         return view('mycart', $data)->with('message', $message);;
     }
 
-    public function checkout(Cart $cart)
+    public function checkout(Request $request, Cart $cart, Order $order)
     {
+        $completeOrder = $order->completeOrder($request);
         $checkout_info = $cart->checkoutCart();
         return view('checkout');
     }
