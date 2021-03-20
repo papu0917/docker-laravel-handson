@@ -9,8 +9,13 @@ class Order extends Model
 {
     protected $fillable = [
         'name', 'email', 'password', 'addres', 'phone', 'postcode', 'total_prices',
-        'user_id',
+        'user_id', 'stock_id', 'order_id',
     ];
+
+    public function stocks()
+    {
+        return  $this->belongsToMany('App\Models\Stock', 'order__xref_stock', 'order_id', 'stock_id');
+    }
 
     public function completeOrder(Request $request)
     {
@@ -23,5 +28,6 @@ class Order extends Model
         $order->user_id = $request->user_id;
         $order->total_prices = $request->total_prices;
         $order->save();
+        $order->stocks()->attach($request->stock_id);
     }
 }
