@@ -27,6 +27,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/checkout', 'ShopController@checkout');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/mypage', 'MypageController@index');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

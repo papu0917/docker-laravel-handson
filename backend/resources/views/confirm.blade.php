@@ -9,31 +9,31 @@
     <form action="/checkout" method="POST">
 
         <div class="col-md-12">
-            <table align="center" width="50%">
+            <table align="center" width="60%">
 
-                <tr>
-                    <th class="text-center border-bottom">氏名</th>
-                    <td class="text-center border-bottom">{{ Auth::user()->name }}</td>
+                <tr class="name text-center border-bottom" style="padding:50px 10px;">
+                    <th>氏名</th>
+                    <td>{{ Auth::user()->name }}</td>
                     <input type="hidden" name="name" value="{{ Auth::user()->name }}">
                 </tr>
-                <tr>
-                    <th class="text-center border-bottom">郵便番号</th>
-                    <td class="text-center border-bottom">{{ Auth::user()->postcode }}</td>
+                <tr class="postcode text-center border-bottom">
+                    <th>郵便番号</th>
+                    <td>{{ Auth::user()->postcode }}</td>
                     <input type="hidden" name="postcode" value="{{ Auth::user()->postcode }}">
                 </tr>
-                <tr>
-                    <th class="text-center border-bottom">お届け先</th>
-                    <td class="text-center border-bottom">{{ Auth::user()->addres }}</td>
+                <tr class="addres text-center border-bottom">
+                    <th>お届け先</th>
+                    <td>{{ Auth::user()->addres }}</td>
                     <input type="hidden" name="addres" value="{{ Auth::user()->addres }}">
                 </tr>
-                <tr>
-                    <th class="text-center border-bottom">電話番号</th>
-                    <td class="text-center border-bottom">{{ Auth::user()->phone }}</td>
+                <tr class="phone text-center border-bottom">
+                    <th>電話番号</th>
+                    <td>{{ Auth::user()->phone }}</td>
                     <input type="hidden" name="phone" value="{{ Auth::user()->phone }}">
                 </tr>
-                <tr>
-                    <th class="text-center border-bottom">メールアドレス</th>
-                    <td class="text-center border-bottom">{{ Auth::user()->email }}</td>
+                <tr class="email text-center border-bottom">
+                    <th>メールアドレス</th>
+                    <td>{{ Auth::user()->email }}</td>
                     <input type="hidden" name="email" value="{{ Auth::user()->email }}">
                 </tr>
                 <input type="hidden" name='user_id' value="{{ Auth::user()->id }}">
