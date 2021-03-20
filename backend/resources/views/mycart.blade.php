@@ -32,7 +32,7 @@
                         </div>
                         <form action="/confirm" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入する</button>
+                            <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">確認画面へ</button>
                         </form>
 
                     @else

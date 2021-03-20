@@ -6,72 +6,77 @@
         お届け先・ご注文内容
     </h1>
     </div>
-    <div class="col-md-12">
-        <table border=1 align="center" width="60%">
-            <tr>
-                <th class="text-center">氏名</th>
-                <td class="text-center">{{ Auth::user()->name }}</td>
-                <input type="hidden" name="name" value="{{ Auth::user()->name }}">
-            </tr>
-            <tr>
-                <th class="text-center">郵便番号</th>
-                <td class="text-center">{{ Auth::user()->postcode }}</td>
-                <input type="hidden" name="postcode" value="{{ Auth::user()->postcode }}">
-            </tr>
-            <tr>
-                <th class="text-center">お届け先</th>
-                <td class="text-center">{{ Auth::user()->addres }}</td>
-                <input type="hidden" name="addres" value="{{ Auth::user()->addres }}">
-            </tr>
-            <tr>
-                <th class="text-center">電話番号</th>
-                <td class="text-center">{{ Auth::user()->phone }}</td>
-                <input type="hidden" name="phone" value="{{ Auth::user()->phone }}">
-            </tr>
-            <tr>
-                <th class="text-center">メールアドレス</th>
-                <td class="text-center">{{ Auth::user()->email }}</td>
-                <input type="hidden" name="email" value="{{ Auth::user()->email }}">
-            </tr>
-            <input type="hidden" name='user_id' value="{{ Auth::user()->id }}">
-        </table>
-    </div>
-    <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
-        {{-- ご注文内容 --}}
-    </h1>
-    <div class="col-md-12">
-        <div class="row">
-            <table class="table table-striped">
+    <form action="/checkout" method="POST">
 
-                <thead>
-                    <tr>
-                        <th width="50%">商品名</th>
-                        <th>数量</th>
-                        <th>金額</th>
-                    </tr>
-                </thead>
+        <div class="col-md-12">
+            <table align="center" width="50%">
 
-                <tbody>
-                    @foreach ($my_carts as $my_cart)
-                        <tr>
-                            <th>{{ $my_cart->stock->name }}</th>
-                            <th>1</th>
-                            <th>{{ number_format($my_cart->stock->fee) }}円</th>
-                            <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
-                            <input type="hidden" name="total_prices" value="{{ $sum }}">
-                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        </tr>
-                    @endforeach
-
-                </tbody>
+                <tr>
+                    <th class="text-center border-bottom">氏名</th>
+                    <td class="text-center border-bottom">{{ Auth::user()->name }}</td>
+                    <input type="hidden" name="name" value="{{ Auth::user()->name }}">
+                </tr>
+                <tr>
+                    <th class="text-center border-bottom">郵便番号</th>
+                    <td class="text-center border-bottom">{{ Auth::user()->postcode }}</td>
+                    <input type="hidden" name="postcode" value="{{ Auth::user()->postcode }}">
+                </tr>
+                <tr>
+                    <th class="text-center border-bottom">お届け先</th>
+                    <td class="text-center border-bottom">{{ Auth::user()->addres }}</td>
+                    <input type="hidden" name="addres" value="{{ Auth::user()->addres }}">
+                </tr>
+                <tr>
+                    <th class="text-center border-bottom">電話番号</th>
+                    <td class="text-center border-bottom">{{ Auth::user()->phone }}</td>
+                    <input type="hidden" name="phone" value="{{ Auth::user()->phone }}">
+                </tr>
+                <tr>
+                    <th class="text-center border-bottom">メールアドレス</th>
+                    <td class="text-center border-bottom">{{ Auth::user()->email }}</td>
+                    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                </tr>
+                <input type="hidden" name='user_id' value="{{ Auth::user()->id }}">
             </table>
         </div>
-    </div>
-    <div class="text-center p-2">
-        個数：{{ $count }}個<br>
-        <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($sum) }}円</p>
+        <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
+            {{-- ご注文内容 --}}
+        </h1>
+        <div class="col-md-12">
+            <div class="row">
+                <table class="table table-striped">
 
-    </div>
-    @csrf
-    <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入して決済へ進む</button>
+                    <thead>
+                        <tr>
+                            <th width="50%">商品名</th>
+                            <th>数量</th>
+                            <th>金額</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach ($my_carts as $my_cart)
+                            <tr>
+                                <th>{{ $my_cart->stock->name }}</th>
+                                <th>1</th>
+                                <th>{{ number_format($my_cart->stock->fee) }}円</th>
+                                <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
+                                <input type="hidden" name="total_prices" value="{{ $sum }}">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="text-center p-2">
+            個数：{{ $count }}個<br>
+            <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($sum) }}円</p>
+        </div>
+        @csrf
+        <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入する</button>
+    </form>
+
+
 @endsection
