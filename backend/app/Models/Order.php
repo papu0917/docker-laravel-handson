@@ -17,6 +17,8 @@ class Order extends Model
         return  $this->belongsToMany('App\Models\Stock', 'order__xref_stock', 'order_id', 'stock_id');
     }
 
+
+
     public function completeOrder(Request $request)
     {
         $order = new Order;
