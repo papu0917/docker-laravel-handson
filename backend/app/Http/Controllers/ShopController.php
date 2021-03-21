@@ -39,8 +39,9 @@ class ShopController extends Controller
     public function confirm(Cart $cart)
     {
         $user_id = Auth::id();
+        $user = Auth::user();
         $cartInfo = $cart->makeCartInfo($user_id);
-        return view('confirm', compact('cartInfo'));
+        return view('confirm', compact('cartInfo', 'user'));
     }
 
     public function deleteCart(Request $request, Cart $cart)
