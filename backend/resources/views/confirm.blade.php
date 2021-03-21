@@ -13,30 +13,30 @@
 
                 <tr class="name text-center border-bottom" style="padding:50px 10px;">
                     <th>氏名</th>
-                    <td>{{ Auth::user()->name }}</td>
-                    <input type="hidden" name="name" value="{{ Auth::user()->name }}">
+                    <td>{{ $user->name }}</td>
+                    <input type="hidden" name="name" value="{{ $user->name }}">
                 </tr>
                 <tr class="postcode text-center border-bottom">
                     <th>郵便番号</th>
-                    <td>{{ Auth::user()->postcode }}</td>
-                    <input type="hidden" name="postcode" value="{{ Auth::user()->postcode }}">
+                    <td>{{ $user->postcode }}</td>
+                    <input type="hidden" name="postcode" value="{{ $user->postcode }}">
                 </tr>
                 <tr class="addres text-center border-bottom">
                     <th>お届け先</th>
-                    <td>{{ Auth::user()->addres }}</td>
-                    <input type="hidden" name="addres" value="{{ Auth::user()->addres }}">
+                    <td>{{ $user->addres }}</td>
+                    <input type="hidden" name="addres" value="{{ $user->addres }}">
                 </tr>
                 <tr class="phone text-center border-bottom">
                     <th>電話番号</th>
-                    <td>{{ Auth::user()->phone }}</td>
-                    <input type="hidden" name="phone" value="{{ Auth::user()->phone }}">
+                    <td>{{ $user->phone }}</td>
+                    <input type="hidden" name="phone" value="{{ $user->phone }}">
                 </tr>
                 <tr class="email text-center border-bottom">
                     <th>メールアドレス</th>
-                    <td>{{ Auth::user()->email }}</td>
-                    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                    <td>{{ $user->email }}</td>
+                    <input type="hidden" name="email" value="{{ $user->email }}">
                 </tr>
-                <input type="hidden" name='user_id' value="{{ Auth::user()->id }}">
+                <input type="hidden" name='user_id' value="{{ $user->id }}">
             </table>
         </div>
         <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
@@ -62,7 +62,7 @@
                                 <th>{{ number_format($my_cart->stock->fee) }}円</th>
                                 <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
                                 <input type="hidden" name="total_prices" value="{{ $cartInfo->sum() }}">
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
                             </tr>
                         @endforeach
 
