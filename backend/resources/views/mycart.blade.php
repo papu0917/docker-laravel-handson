@@ -10,8 +10,8 @@
                 <div class="card-body">
                     <p class="text-center">{{ $message ?? '' }}</p><br>
 
-                    @if ($my_carts->isNotEmpty())
-                        @foreach ($my_carts as $my_cart)
+                    @if (!empty($cartInfo->carts()))
+                        @foreach ($cartInfo->carts() as $my_cart)
                             <div class="mycart_box">
                                 {{ $my_cart->stock->name }} <br>
                                 {{ number_format($my_cart->stock->fee) }}円 <br>
@@ -27,8 +27,8 @@
                             </div>
                         @endforeach
                         <div class="text-center p-2">
-                            個数：{{ $count }}個<br>
-                            <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($sum) }}円</p>
+                            個数：{{ $cartInfo->count() }}個<br>
+                            <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($cartInfo->sum()) }}円</p>
                         </div>
                         <form action="/confirm" method="POST">
                             @csrf

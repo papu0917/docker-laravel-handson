@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Dto\CartInfo;
 
 class Cart extends Model
 {
@@ -11,19 +12,20 @@ class Cart extends Model
         'id'
     ];
 
-    public function showCart()
+    public function makeCartInfo(int $user_id): CartInfo
     {
-        $user_id = Auth::id();
-        $data['my_carts'] = $this->where('user_id', $user_id)->get();
+        $my_carts = $this->where('user_id', $user_id)->get();
 
-        $data['count'] = 0;
-        $data['sum'] = 0;
+        $count = 0;
+        $sum = 0;
 
-        foreach ($data['my_carts'] as $my_cart) {
-            $data['count']++;
-            $data['sum'] += $my_cart->stock->fee;
+        foreach ($my_carts as $my_cart) {
+            $count++;
+            $sum += $my_cart->stock->fee;
         }
-        return $data;
+
+        $cartInfo = new CartInfo($my_carts, $count, $sum);
+        return $cartInfo;
     }
 
     public function stock()
@@ -36,13 +38,9 @@ class Cart extends Model
         $user_id = Auth::id();
         $cart_add_info = Cart::firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id]);
 
-        if ($cart_add_info->wasRecentlyCreated) {
-            $message = 'カートに追加しました';
-        } else {
-            $message = 'カートに登録済みです';
-        }
-
-        return $message;
+        return ($cart_add_info->wasRecentlyCreated)
+            ? 'カートに追加しました'
+            : 'カートに登録済みです';
     }
 
     public function deleteCart($stock_id)

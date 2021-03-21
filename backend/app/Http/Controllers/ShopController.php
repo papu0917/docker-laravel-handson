@@ -21,34 +21,36 @@ class ShopController extends Controller
 
     public function myCart(Cart $cart)
     {
-        $data = $cart->showCart();
-        return view('mycart', $data);
+        $user_id = Auth::id();
+        $cartInfo = $cart->makeCartInfo($user_id);
+        return view('mycart', compact('cartInfo'));
     }
 
     public function addMycart(Request $request, Cart $cart)
     {
+        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->addCart($stock_id);
-        $data = $cart->showCart();
+        $cartInfo = $cart->makeCartInfo($user_id);
 
-        return view('mycart', $data)->with('message', $message);
+        return view('mycart', compact('cartInfo'))->with('message', $message);
     }
 
     public function confirm(Cart $cart)
     {
         $user_id = Auth::id();
-        $data = $cart->showCart();
-        return view('confirm', $data);
+        $cartInfo = $cart->makeCartInfo($user_id);
+        return view('confirm', compact('cartInfo'));
     }
 
     public function deleteCart(Request $request, Cart $cart)
     {
-
+        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->deleteCart($stock_id);
-        $data = $cart->showCart();
+        $cartInfo = $cart->makeCartInfo($user_id);
 
-        return view('mycart', $data)->with('message', $message);;
+        return view('mycart', compact('cartInfo'))->with('message', $message);;
     }
 
     public function checkout(Request $request, Cart $cart, Order $order)
