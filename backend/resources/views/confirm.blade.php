@@ -9,6 +9,7 @@
     <form action="/checkout" method="POST">
 
         <div class="col-md-12">
+
             <table align="center" width="60%">
 
                 <tr class="name text-center border-bottom" style="padding:50px 10px;">
@@ -38,6 +39,7 @@
                 </tr>
                 <input type="hidden" name='user_id' value="{{ $user->id }}">
             </table>
+
         </div>
         <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
             {{-- ご注文内容 --}}
