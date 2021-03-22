@@ -29,16 +29,13 @@
 
     </div>
 
+
     <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">注文履歴</h1>
-    @foreach ($showOrders as $order)
-        {{ $order->id }}
-    @endforeach
-
-    {{-- @foreach ($orderHistory as $history)
-        {{ $history }}
-    @endforeach --}}
-
-
+    <div class="text-center">
+        @foreach ($ids as $order)
+            {{ $order->name }}<br>
+        @endforeach
+    </div>
 
 
 @endsection

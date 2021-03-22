@@ -4,37 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Stock;
 use Illuminate\Support\Facades\Auth;
 
+use function Ramsey\Uuid\v1;
 
 class MypageController extends Controller
 {
-    public function index(Order $order)
+    public function index(Request $request, Order $order)
     {
         $user = Auth::user();
-        $user_id = Auth::id();
-        $showOrders = Order::where('user_id', $user_id)->get();
+        $showOrders = Order::where('user_id', $user->id)->get();
 
-        // $showOrders->whereHas('stocks', function ($query) {
-        //     $query->where('stock_id');
-        // })->get();
+        foreach ($showOrders as $order) {
+            // TODO: $orderIdsに一致する、stock_idを取得したい
+            $orderIds = $order->id;
+        }
 
-        // dd($orderHistory);
+        $orderList = Stock::whereHas('orders', function ($query) use ($orderIds) {
+            $query->where('order_id', $orderIds);
+        });
 
-        // $accountbookPrice = $accountbookByTag
-        //     ->whereHas('tags', function ($query) use ($request) {
-        //         $query->where('tags.id', $request->tags);
-        //     })->get()
-        //     ->groupBy(function ($row) {
-        //         return $row->tag;
-        //     })
-        //     ->map(function ($value) {
-        //         return $value->sum('price');
-        //     });
+        $ids = $orderList->get();
 
-
-
-
-        return view('/mypage', compact('user', 'showOrders'));
+        return view('/mypage', compact('user', 'ids'));
     }
 }
