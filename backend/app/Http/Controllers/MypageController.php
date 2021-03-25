@@ -14,19 +14,13 @@ class MypageController extends Controller
     public function index(Request $request, Order $order)
     {
         $user = Auth::user();
-        $showOrders = Order::where('user_id', $user->id)->get();
-
-        foreach ($showOrders as $order) {
-            // TODO: $orderIdsに一致する、stock_idを取得したい
-            $orderIds = $order->id;
-        }
-
-        $orderList = Stock::whereHas('orders', function ($query) use ($orderIds) {
-            $query->where('order_id', $orderIds);
+        $showOrders = Order::where('user_id', $user->id);
+        $showOrders = Stock::whereHas('orders', function ($query) use ($showOrders) {
+            $showOrders->where('order_id', $showOrders);
         });
 
-        $ids = $orderList->get();
+        $lists = $showOrders->get();
 
-        return view('/mypage', compact('user', 'ids'));
+        return view('/mypage', compact('user', 'lists'));
     }
 }
