@@ -18,6 +18,7 @@ class Order extends Model
 
     public function stocks()
     {
+
         return  $this->belongsToMany('App\Models\Stock', 'order_stock');
     }
 

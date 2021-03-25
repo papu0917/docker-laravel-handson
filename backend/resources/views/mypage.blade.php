@@ -30,18 +30,12 @@
     </div>
 
 
+
     <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">注文履歴</h1>
     <div class="text-center">
-        {{-- @php
-            dd($lists);
-        @endphp --}}
-
-        {{-- @endphp --}}
-
-        @foreach ($lists as $order)
-            {{ $order->name }}<br>
+        @foreach ($ordersId as $id)
+            {{ $id }}
         @endforeach
     </div>
-
 
 @endsection
