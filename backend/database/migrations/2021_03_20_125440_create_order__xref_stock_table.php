@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderStockTable extends Migration
+class CreateOrderXrefStockTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOrderStockTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_stock', function (Blueprint $table) {
+        Schema::create('order__xref_stock', function (Blueprint $table) {
             $table->bigincrements('id');
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('stock_id');
@@ -28,6 +28,6 @@ class CreateOrderStockTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_stock');
+        Schema::dropIfExists('order__xref_stock');
     }
 }

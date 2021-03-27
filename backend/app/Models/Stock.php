@@ -10,8 +10,4 @@ class Stock extends Model
         'id'
     ];
 
-    public function orders()
-    {
-        return $this->belongsToMany('App\Models\Order', 'order_stock');
-    }
 }
