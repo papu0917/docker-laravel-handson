@@ -8,5 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class MypageController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
 
+        return view('/mypage', compact('user'));
+    }
 }
