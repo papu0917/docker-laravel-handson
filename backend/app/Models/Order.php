@@ -12,22 +12,10 @@ class Order extends Model
         'user_id', 'stock_id', 'order_id',
     ];
 
-    protected $guarded = [
-        'id'
-    ];
-
     public function stocks()
     {
-
-        return  $this->belongsToMany('App\Models\Stock', 'order_stock');
+        return  $this->belongsToMany('App\Models\Stock', 'order__xref_stock', 'order_id', 'stock_id');
     }
-    // public function orders()
-    // {
-    //     return $this->belongsToMany('App\Models\Order', 'order_stock');
-    // }
-
-
-
 
     public function completeOrder(Request $request)
     {
