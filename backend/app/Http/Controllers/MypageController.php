@@ -16,18 +16,18 @@ class MypageController extends Controller
     {
         $user = Auth::user();
         // 一致するストックIDのユーザー情報を取得できる。
-        $orderInfo = Order::where('user_id', $user->id)
-            ->whereHas('stocks', function ($query) {
-                $query->whereBetween('order_id', [1, 100]);
-            })->get();
-        dd($orderInfo[0]);
+        // $orderInfo = Order::where('user_id', $user->id)
+        //     ->whereHas('stocks', function ($query) {
+        //         $query->whereBetween('order_id', [1, 100]);
+        //     })->get();
+        // dd($orderInfo[0]);
 
 
         // 履歴の全件取得できる、さらに絞り込みたい。
-        // $orderInfo = Order::where('user_id', $user->id);
-        // $orderInfo = Stock::whereHas('orders', function ($query) use ($orderInfo) {
-        //     $orderInfo->where('order_id', $orderInfo);
-        // })->get();
+        $orderInfo = Order::where('user_id', $user->id);
+        $orderInfo = Stock::whereHas('orders', function ($query) use ($orderInfo) {
+            $orderInfo->where('order_id', $orderInfo);
+        })->get();
 
         $lists = $orderInfo;
 
