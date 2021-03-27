@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Cart;
 use App\Models\Order;
+
 use DB;
 use Illuminate\Support\Facades\Auth;
 
