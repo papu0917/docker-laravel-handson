@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function favorite()
+    {
+        return $this->belongsTo('\App\Models\Stock' . 'user_favorite');
+    }
 }
