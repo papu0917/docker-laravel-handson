@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/mypage', 'MypageController@list');
+    Route::get('/mypage', 'MypageController@index');
 });
 
 Auth::routes();

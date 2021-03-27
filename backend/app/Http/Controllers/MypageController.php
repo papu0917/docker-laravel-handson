@@ -15,10 +15,26 @@ class MypageController extends Controller
     public function index(Request $request, Order $order)
     {
         $user = Auth::user();
+        // $user_id = Order::where('user_id', $user->id)->get();
+        // // dd($user_id);
+        // // 一致するストックIDのユーザー情報を取得できる。
+        // $order = Order::find($user_id);
+        // dd($order);
+
+        // $orderInfo = Order::where('user_id', $user->id)
+        //     ->whereHas('stocks', function ($query) {
+        //         $query->where('stock_id', 11);
+        //     })->get();
+        // dd($orderInfo);
+
+
+        // 履歴の全件取得できる、さらに絞り込みたい。
         $orderInfo = Order::where('user_id', $user->id);
         $orderInfo = Stock::whereHas('orders', function ($query) use ($orderInfo) {
             $orderInfo->where('order_id', $orderInfo);
         })->get();
+
+
 
         $lists = $orderInfo;
 
@@ -36,6 +52,7 @@ class MypageController extends Controller
         }
         // dd($ordersHistory);
 
+        // 中間テーブルからのデータ取得がよく分からないので直接取得できないか試してみた。
         $orderInfo = [
             'records' => DB::select('SELECT * FROM order_stock')
         ];
@@ -45,12 +62,10 @@ class MypageController extends Controller
         $totalOrderIds = [];
         for ($i = 0; $i < $count; $i++) {
             $totalOrdersId[$i] = $orderInfo['records'][$i]->order_id;
-            // $totalOrdersId[$i] = $orderInfo['records'][$i]->stock_id
         }
-        dd($totalOrdersId);
+        // dd($totalOrdersId);
         $ordersId = array_intersect($ordersHistory, $totalOrdersId);
         // dd($ordersId);
-
 
         return view('/mypage', $ordersId, compact('user'));
     }

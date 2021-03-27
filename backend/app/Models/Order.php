@@ -21,6 +21,10 @@ class Order extends Model
 
         return  $this->belongsToMany('App\Models\Stock', 'order_stock');
     }
+    // public function orders()
+    // {
+    //     return $this->belongsToMany('App\Models\Order', 'order_stock');
+    // }
 
 
 
