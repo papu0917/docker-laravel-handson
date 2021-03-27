@@ -14,12 +14,7 @@ class Order extends Model
 
     public function stocks()
     {
-<<<<<<< HEAD
-        return  $this->belongsToMany('App\Models\Stock', 'order__xref_stock', 'order_id', 'stock_id');
-=======
-
-        return  $this->belongsToMany('App\Models\Stock', 'order_stock', 'order_id');
->>>>>>> feature/create_favorites_table-mm
+        return  $this->belongsToMany('App\Models\Stock', 'order_stock');
     }
 
     public function completeOrder(Request $request)
