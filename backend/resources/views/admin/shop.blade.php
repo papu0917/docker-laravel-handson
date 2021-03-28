@@ -20,15 +20,6 @@
                                         <h5 class="card-title">{{ $stock->name }}</h5>
                                         <p class="text-danger card-price">{{ number_format($stock->fee) }}円</p>
                                         <p class="card-text">{{ $stock->detail }}</p>
-
-                                        <form action="mycart" method="post">
-                                            @csrf
-                                            <input type="hidden" name="stock_id" value="{{ $stock->id }}">
-                                            <div class="text-center">
-                                                <input type="submit" class="col btn btn-danger add-btn btn-rounded"
-                                                    value="カートに入れる">
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
