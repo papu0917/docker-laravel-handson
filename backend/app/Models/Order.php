@@ -17,6 +17,11 @@ class Order extends Model
         return  $this->belongsToMany('App\Models\Stock', 'order_stock');
     }
 
+    public function user()
+    {
+        return  $this->belongsTo('App\User');
+    }
+
     public function completeOrder(Request $request)
     {
         $order = new Order;
