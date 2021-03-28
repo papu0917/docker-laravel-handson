@@ -13,11 +13,8 @@ class MypageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $ordersHistory = Order::where('user_id', $user->id);
-        $ordersHistory = Stock::whereHas('orders', function ($query) use ($ordersHistory) {
-            $ordersHistory->where('order_id', $ordersHistory);
-        })->get();
+        $orders = Order::where('user_id', $user->id)->get();
 
-        return view('/mypage', compact('user', 'ordersHistory'));
+        return view('/mypage', compact('user', 'orders'));
     }
 }

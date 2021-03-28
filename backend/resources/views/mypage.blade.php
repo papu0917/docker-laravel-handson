@@ -31,8 +31,10 @@
 
     <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">注文履歴</h1>
     <div class="text-center" style="margin-top: 30px;">
-        @foreach ($ordersHistory as $order)
-            {{ $order->name }}<br>
+        @foreach ($orders as $ids)
+            @foreach ($ids->stocks as $stock)
+                {{ $stock->name }}<br>
+            @endforeach
         @endforeach
     </div>
 @endsection
