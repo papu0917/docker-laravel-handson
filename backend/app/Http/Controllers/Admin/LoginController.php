@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin; // Auth→Adminに変更
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {

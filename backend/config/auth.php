@@ -78,7 +78,7 @@ return [
 
         'admins' => [ //追加
             'driver' => 'eloquent', //追加
-            'model' => App\Admin::class, //追加
+            'model' => App\Models\Admin::class, //追加
         ],
 
         // 'users' => [
