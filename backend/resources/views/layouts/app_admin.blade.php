@@ -64,7 +64,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                   document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                   document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -72,7 +72,9 @@
                                         style="display: none;">
                                         @csrf
                                     </form>
-
+                                    <a class="dropdown-item" href="{{ url('/admin/store') }}">
+                                        商品を登録する
+                                    </a>
 
                                 </div>
                             </li>
@@ -98,6 +100,7 @@
 
                     @if (Route::has('register'))
                 </p>
+
                 @endif
 
             @endguest
