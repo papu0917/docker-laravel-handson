@@ -10,6 +10,13 @@ class Stock extends Model
         'id'
     ];
 
+    public static $rules = array(
+        'name' => 'required',
+        'fee' => 'required',
+        'detail' => 'required',
+        'imgpath' => 'required',
+    );
+
     public function orders()
     {
         return  $this->belongsToMany('App\Models\Order', 'order_stock');
