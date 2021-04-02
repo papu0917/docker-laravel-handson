@@ -38,6 +38,7 @@
                 @foreach ($order->stocks as $stock)
                     <tr class="">
                         <td>{{ $stock->name }}</td>
+                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
                     </tr>
                 @endforeach
             @endforeach
