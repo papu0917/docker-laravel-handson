@@ -35,7 +35,7 @@
                     <input type="hidden" name='user_id' value="{{ $user->id }}">
                 </table>
             </div>
-            <table class="table table-striped">
+            <table class="table">
 
                 <thead>
                     <tr>
