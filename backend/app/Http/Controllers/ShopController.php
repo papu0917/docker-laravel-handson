@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\Cart;
 use App\Models\Order;
 use DB;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 
 use function Ramsey\Uuid\v1;
@@ -56,8 +57,10 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart, Order $order)
     {
+        $this->validate($request, Order::$rules);
+        $completeOrder = $order->completeOrder($request);
         DB::transaction(function () use ($request, $order) {
-            $completeOrder = $order->completeOrder($request);
+            // $completeOrder = $order->completeOrder($request);
         });
 
         $checkout_info = $cart->checkoutCart();
