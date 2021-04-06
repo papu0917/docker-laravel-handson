@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <div id="app">
+        <example-component></example-component>
+    </div>
     <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">基本情報</h1>
     <div style="margin-top: 30px;">
 

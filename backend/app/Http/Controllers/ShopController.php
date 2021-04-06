@@ -63,4 +63,9 @@ class ShopController extends Controller
         $checkout_info = $cart->checkoutCart();
         return view('checkout');
     }
+
+    public function vue()
+    {
+        return view('index');
+    }
 }
