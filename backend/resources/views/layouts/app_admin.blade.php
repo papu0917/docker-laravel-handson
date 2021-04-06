@@ -64,7 +64,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                   document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                       document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -107,7 +107,7 @@
             <br>
             <div style="margin-top:24px;">
                 管理者画面<br>
-                <p style="font-size:2.4em">Larashop</p><br>
+                <p style="font-size:2.4em">Myshop</p><br>
             </div>
 
         </footer>
