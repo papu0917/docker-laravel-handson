@@ -19,23 +19,10 @@ class ShopController extends Controller
         return view('admin.store');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Stock $image)
     {
         $this->validate($request, Stock::$rules);
-        if ($file = $request->imgpath) {
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('image/');
-            $file->move($target_path, $fileName);
-        } else {
-            $fileName = "";
-        }
-
-        $stock = new Stock;
-        $stock->name = $request->name;
-        $stock->fee = $request->fee;
-        $stock->detail = $request->detail;
-        $stock->imgpath = $fileName;
-        $stock->save();
+        $fileName = $image->imageInfo($request);
 
         return view('admin.store');
     }

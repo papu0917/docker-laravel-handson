@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Stock extends Model
 {
@@ -20,5 +21,28 @@ class Stock extends Model
     public function orders()
     {
         return  $this->belongsToMany('App\Models\Order', 'order_stock');
+    }
+
+    public function getImage($request)
+    {
+        if ($file = $request->imgpath) {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('image/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
+
+        return $fileName;
+    }
+
+    public function imageInfo($request)
+    {
+        $stock = new Stock;
+        $stock->name = $request->name;
+        $stock->fee = $request->fee;
+        $stock->detail = $request->detail;
+        $stock->imgpath = $this->getImage($request);
+        $stock->save();
     }
 }
