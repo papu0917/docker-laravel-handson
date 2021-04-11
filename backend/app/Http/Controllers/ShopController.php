@@ -58,12 +58,9 @@ class ShopController extends Controller
     public function checkout(Request $request, Cart $cart, Order $order)
     {
         $this->validate($request, Order::$rules);
-        $completeOrder = $order->completeOrder($request);
-        DB::transaction(function () use ($request, $order) {
-            // $completeOrder = $order->completeOrder($request);
-        });
+        $order->completeOrder($request);
+        $cart->checkoutCart();
 
-        $checkout_info = $cart->checkoutCart();
         return view('checkout');
     }
 }
