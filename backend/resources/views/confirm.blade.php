@@ -2,7 +2,17 @@
 
 @section('content')
 
+
     <div class="main">
+        <div style="color:red;">
+            @if (count($errors) > 0)
+                <ul>
+                    @foreach ($errors->all() as $e)
+                        <li>{{ $e }}</li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
         <form action="/checkout" method="POST">
             <div class="contents">
                 <p class="section-title">お届け先・配送方法・お支払い方法</p>

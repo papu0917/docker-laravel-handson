@@ -12,6 +12,16 @@ class Order extends Model
         'user_id', 'stock_id', 'order_id',
     ];
 
+    public static $rules = [
+        'name' => 'required|max:255',
+        'postcode' => 'required|max:8',
+        'addres' => 'required',
+        'phone' => 'required|max:11',
+        'email' => 'required|email',
+        'user_id' => 'required',
+        'total_prices' => 'required',
+    ];
+
     public function stocks()
     {
         return  $this->belongsToMany('App\Models\Stock', 'order_stock');
