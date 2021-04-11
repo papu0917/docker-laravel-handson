@@ -47,8 +47,7 @@ class Cart extends Model
     {
         $user_id = Auth::id();
         $delete = $this->where('user_id', $user_id)->where('stock_id', $stock_id)->delete();
-        $message = ($delete > 0) ? 'カートから一つの商品を削除しました' : '削除に失敗しました';
-        return $message;
+        return ($delete > 0) ? 'カートから一つの商品を削除しました' : '削除に失敗しました';
     }
 
     public function checkoutCart(): void
