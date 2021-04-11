@@ -22,7 +22,7 @@ class ShopController extends Controller
     public function store(Request $request, Stock $image)
     {
         $this->validate($request, Stock::$rules);
-        $imageInfo = $image->imageInfo($request);
+        $image->saveWithImage($request);
 
         return view('admin.store');
     }

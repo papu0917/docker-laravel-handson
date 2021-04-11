@@ -23,26 +23,27 @@ class Stock extends Model
         return  $this->belongsToMany('App\Models\Order', 'order_stock');
     }
 
-    public function getImage($request)
+    private function makeImageFileName($request)
     {
-        if ($file = $request->imgpath) {
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('image/');
-            $file->move($target_path, $fileName);
-        } else {
-            $fileName = "";
+        $file = $request->imgpath;
+        if (!$file) {
+            return "";
         }
+
+        $fileName = time() . $file->getClientOriginalName();
+        $target_path = public_path('image/');
+        $file->move($target_path, $fileName);
 
         return $fileName;
     }
 
-    public function imageInfo($request)
+    public function saveWithImage($request): void
     {
         $stock = new Stock;
         $stock->name = $request->name;
         $stock->fee = $request->fee;
         $stock->detail = $request->detail;
-        $stock->imgpath = $this->getImage($request);
+        $stock->imgpath = $this->makeImageFileName($request);
         $stock->save();
     }
 }
