@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Stock;
+use App\Models\Test;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -25,5 +26,9 @@ class ShopController extends Controller
         $imageInfo = $image->imageInfo($request);
 
         return view('admin.store');
+    }
+
+    public function testCode(Request $request, Stock $image)
+    {
     }
 }

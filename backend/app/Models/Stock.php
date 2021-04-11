@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Models\Test;
 
 class Stock extends Model
 {
@@ -39,6 +40,7 @@ class Stock extends Model
     public function imageInfo($request)
     {
         $stock = new Stock;
+        $stock = new Test;
         $stock->name = $request->name;
         $stock->fee = $request->fee;
         $stock->detail = $request->detail;
