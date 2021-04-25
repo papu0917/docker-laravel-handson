@@ -39,8 +39,9 @@
                     @foreach ($order->stocks as $stock)
                         <div>
                             <p>{{ $stock->name }}</p>
+                            {{-- <p>{{ $order->created_at->format('Y-m-d') }}</p> --}}
                         </div>
-                        <p>{{ $order->created_at->format('Y-m-d') }}</p>
+
                     @endforeach
                 </div>
             @endforeach
