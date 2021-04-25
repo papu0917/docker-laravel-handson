@@ -32,16 +32,18 @@
                 <input type="hidden" name='user_id' value="{{ $user->id }}">
             </table>
         </div>
-        <table class="table">
+        <div class="">
             <p class="section-title">注文履歴</p>
             @foreach ($orders as $order)
-                @foreach ($order->stocks as $stock)
-                    <tr class="">
-                        <td>{{ $stock->name }}</td>
-                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
-                    </tr>
-                @endforeach
+                <div class="border-bottom">
+                    @foreach ($order->stocks as $stock)
+                        <div>
+                            <p>{{ $stock->name }}</p>
+                        </div>
+                        <p>{{ $order->created_at->format('Y-m-d') }}</p>
+                    @endforeach
+                </div>
             @endforeach
-        </table>
+        </div>
     </div>
 @endsection

@@ -13,7 +13,9 @@ class MypageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $orders = Order::where('user_id', $user->id)->get();
+        $orders = Order::where('user_id', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         return view('/mypage', compact('user', 'orders'));
     }
