@@ -16,6 +16,7 @@ class MypageController extends Controller
         $orders = Order::where('user_id', $user->id)
             ->orderBy('created_at', 'DESC')
             ->get();
+        // dd($orders);
 
         return view('/mypage', compact('user', 'orders'));
     }

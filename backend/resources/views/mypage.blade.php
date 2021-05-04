@@ -39,9 +39,9 @@
                     @foreach ($order->stocks as $stock)
                         <div>
                             <p>{{ $stock->name }}</p>
-                            {{-- <p>{{ $order->created_at->format('Y-m-d') }}</p> --}}
+                            <p>{{ $order->created_at->format('Y-m-d') }}</p>
+                            <img src="/image/{{ $stock->imgpath }}" alt="" width="20%" height="100">
                         </div>
-
                     @endforeach
                 </div>
             @endforeach
