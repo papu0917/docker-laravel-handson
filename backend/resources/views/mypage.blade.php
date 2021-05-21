@@ -4,22 +4,22 @@
         <div class="contents">
             <p class="section-title">基本情報</p>
             <table class="table">
-                <tr class="name border-bottom">
+                <tr class="name ">
                     <th>氏名</th>
                     <td>{{ $user->name }}</td>
                     <input type="hidden" name="name" value="{{ $user->name }}">
                 </tr>
-                <tr class="postcode border-bottom">
+                <tr class="postcode ">
                     <th>郵便番号</th>
                     <td>{{ $user->postcode }}</td>
                     <input type="hidden" name="postcode" value="{{ $user->postcode }}">
                 </tr>
-                <tr class="addres border-bottom">
+                <tr class="addres ">
                     <th>お届け先</th>
                     <td>{{ $user->addres }}</td>
                     <input type="hidden" name="addres" value="{{ $user->addres }}">
                 </tr>
-                <tr class="phone border-bottom">
+                <tr class="phone ">
                     <th>電話番号</th>
                     <td>{{ $user->phone }}</td>
                     <input type="hidden" name="phone" value="{{ $user->phone }}">
@@ -35,14 +35,24 @@
         <div class="">
             <p class="section-title">注文履歴</p>
             @foreach ($orders as $order)
-                <div class="border-bottom">
+                <div class="order-history">
+
+                    <div class="order">
+                        <p>注文日</p>
+                        <p>{{ $order->created_at->format('Y-m-d') }}</p>
+                    </div>
+                    <div class="total-price">
+                        <p>合計金額</p>
+                        <p>{{ $order->total_prices }}</p>
+                    </div>
+
                     @foreach ($order->stocks as $stock)
-                        <div>
-                            <p>{{ $stock->name }}</p>
-                            <p>{{ $order->created_at->format('Y-m-d') }}</p>
+                        <div class="">
+                            {{-- <p>{{ $stock->name }}</p> --}}
                             <img src="/image/{{ $stock->imgpath }}" alt="" width="20%" height="100">
                         </div>
                     @endforeach
+
                 </div>
             @endforeach
         </div>

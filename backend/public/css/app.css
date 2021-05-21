@@ -11039,7 +11039,7 @@ span {
 }
 
 .contents {
-  height: 500px;
+  height: 400px;
   margin-top: 10px;
 }
 
@@ -11047,25 +11047,30 @@ span {
   font-size: 28px;
   font-weight: 100;
   padding-bottom: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+}
+
+.order-history {
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  width: 100%;
   border-bottom: 2px solid #dee7ec;
 }
 
-.wrap {
-  display: inline-block;
-  vertical-align: middle;
-  height: auto;
-  margin: 0 0 0 -4px;
-  width: 400px;
-  zoom: 1;
-  padding: 5px 0;
-  line-height: 1.6;
+.order-info {
+  width: 100%;
+  background-color: #26d0c9;
 }
 
+.order {
+  width: 10%;
+  float: left;
+}
 
-
-
-
+.total-price {
+  width: 90%;
+  float: right;
+}
 
 
 
