@@ -15,9 +15,7 @@ class MypageController extends Controller
         $user = Auth::user();
         $orders = Order::where('user_id', $user->id)
             ->orderBy('created_at', 'DESC')
-
-            ->get();
-        // dd($orders);
+            ->paginate(5);
 
         return view('/mypage', compact('user', 'orders'));
     }
