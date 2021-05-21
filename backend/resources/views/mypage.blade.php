@@ -36,23 +36,26 @@
             <p class="section-title">注文履歴</p>
             @foreach ($orders as $order)
                 <div class="order-history">
-
                     <div class="order">
                         <p>注文日</p>
-                        <p>{{ $order->created_at->format('Y-m-d') }}</p>
+                        <p>{{ $order->created_at->format('Y年m月d日') }}</p>
                     </div>
                     <div class="total-price">
                         <p>合計金額</p>
-                        <p>{{ $order->total_prices }}</p>
+                        <p>￥{{ $order->total_prices }}</p>
                     </div>
-
                     @foreach ($order->stocks as $stock)
                         <div class="">
-                            {{-- <p>{{ $stock->name }}</p> --}}
-                            <img src="/image/{{ $stock->imgpath }}" alt="" width="20%" height="100">
+                            <img src="/image/{{ $stock->imgpath }}" class="image">
+                            <div class="commodity-name">
+                                <p>{{ $stock->name }}</p>
+                                <div class="reorder">
+
+                                    <p>再度購入する</p>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
-
                 </div>
             @endforeach
         </div>

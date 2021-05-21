@@ -11051,25 +11051,53 @@ span {
 }
 
 .order-history {
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
   margin-bottom: 25px;
   width: 100%;
-  border-bottom: 2px solid #dee7ec;
-}
-
-.order-info {
-  width: 100%;
-  background-color: #26d0c9;
+  border: 1px solid #dee7ec;
 }
 
 .order {
-  width: 10%;
+  font-size: 13px;
+  color: #565959!important;
+  width: 15%;
+  background-color: rgb(230, 227, 227);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
   float: left;
 }
 
 .total-price {
-  width: 90%;
+  font-size: 13px;
+  color: #565959!important;
+  width: 85%;
+  background-color: rgb(230, 227, 227); 
+  padding-top: 15px;
+  padding-bottom: 15px;
   float: right;
+}
+
+img.image {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  width: 18%;
+  height: 60%;
+}
+
+.commodity-name {
+  width: 78%;
+  margin-top: 12px;
+  float: right;
+}
+
+.reorder {
+  width: 15%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border: 1px solid #dee7ec;
 }
 
 
