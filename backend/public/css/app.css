@@ -11039,7 +11039,7 @@ span {
 }
 
 .contents {
-  height: 500px;
+  height: 400px;
   margin-top: 10px;
 }
 
@@ -11047,25 +11047,56 @@ span {
   font-size: 28px;
   font-weight: 100;
   padding-bottom: 15px;
-  margin-bottom: 50px;
-  border-bottom: 2px solid #dee7ec;
+  margin-bottom: 25px;
 }
 
-.wrap {
-  display: inline-block;
-  vertical-align: middle;
-  height: auto;
-  margin: 0 0 0 -4px;
-  width: 400px;
-  zoom: 1;
-  padding: 5px 0;
-  line-height: 1.6;
+.order-history {
+  /* padding-bottom: 15px; */
+  margin-bottom: 25px;
+  width: 100%;
+  border: 1px solid #dee7ec;
 }
 
+.order {
+  font-size: 13px;
+  color: #565959!important;
+  width: 15%;
+  background-color: rgb(230, 227, 227);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  float: left;
+}
 
+.total-price {
+  font-size: 13px;
+  color: #565959!important;
+  width: 85%;
+  background-color: rgb(230, 227, 227); 
+  padding-top: 15px;
+  padding-bottom: 15px;
+  float: right;
+}
 
+img.image {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  width: 18%;
+  height: 60%;
+}
 
+.commodity-name {
+  width: 78%;
+  margin-top: 12px;
+  float: right;
+}
 
+.reorder {
+  width: 15%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 
 

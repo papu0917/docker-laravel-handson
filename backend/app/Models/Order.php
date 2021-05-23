@@ -16,7 +16,7 @@ class Order extends Model
         'name' => 'required|max:255',
         'postcode' => 'required|max:8',
         'addres' => 'required',
-        'phone' => 'required|max:11',
+        'phone' => 'required|max:13',
         'email' => 'required|email',
         'user_id' => 'required',
         'total_prices' => 'required',

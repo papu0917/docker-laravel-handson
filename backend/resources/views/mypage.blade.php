@@ -4,22 +4,22 @@
         <div class="contents">
             <p class="section-title">基本情報</p>
             <table class="table">
-                <tr class="name border-bottom">
+                <tr class="name ">
                     <th>氏名</th>
                     <td>{{ $user->name }}</td>
                     <input type="hidden" name="name" value="{{ $user->name }}">
                 </tr>
-                <tr class="postcode border-bottom">
+                <tr class="postcode ">
                     <th>郵便番号</th>
                     <td>{{ $user->postcode }}</td>
                     <input type="hidden" name="postcode" value="{{ $user->postcode }}">
                 </tr>
-                <tr class="addres border-bottom">
+                <tr class="addres ">
                     <th>お届け先</th>
                     <td>{{ $user->addres }}</td>
                     <input type="hidden" name="addres" value="{{ $user->addres }}">
                 </tr>
-                <tr class="phone border-bottom">
+                <tr class="phone ">
                     <th>電話番号</th>
                     <td>{{ $user->phone }}</td>
                     <input type="hidden" name="phone" value="{{ $user->phone }}">
@@ -32,16 +32,35 @@
                 <input type="hidden" name='user_id' value="{{ $user->id }}">
             </table>
         </div>
-        <table class="table">
+        <div class="">
             <p class="section-title">注文履歴</p>
             @foreach ($orders as $order)
-                @foreach ($order->stocks as $stock)
-                    <tr class="">
-                        <td>{{ $stock->name }}</td>
-                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
-                    </tr>
-                @endforeach
+                <div class="order-history">
+                    <div class="order">
+                        <p>注文日</p>
+                        <p>{{ $order->created_at->format('Y年m月d日') }}</p>
+                    </div>
+                    <div class="total-price">
+                        <p>合計金額</p>
+                        <p>￥{{ $order->total_prices }}</p>
+                    </div>
+                    @foreach ($order->stocks as $stock)
+                        <div class="">
+                            <img src="/image/{{ $stock->imgpath }}" class="image">
+                            <div class="commodity-name">
+                                <p>{{ $stock->name }}</p>
+                                <div class="reorder">
+                                    <form action="mycart" method="post">
+                                        @csrf
+                                        <input type="hidden" name="stock_id" value="{{ $stock->id }}">
+                                        <input type="submit" value="再度購入する">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             @endforeach
-        </table>
+        </div>
     </div>
 @endsection
