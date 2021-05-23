@@ -50,8 +50,11 @@
                             <div class="commodity-name">
                                 <p>{{ $stock->name }}</p>
                                 <div class="reorder">
-
-                                    <p>再度購入する</p>
+                                    <form action="mycart" method="post">
+                                        @csrf
+                                        <input type="hidden" name="stock_id" value="{{ $stock->id }}">
+                                        <input type="submit" value="再度購入する">
+                                    </form>
                                 </div>
                             </div>
                         </div>
