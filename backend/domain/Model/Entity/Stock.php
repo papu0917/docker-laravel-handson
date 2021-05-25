@@ -37,17 +37,17 @@ class Stock
         return $this->name;
     }
 
-    public function detail()
+    public function detail(): StockDetail
     {
         return $this->detail;
     }
 
-    public function fee()
+    public function fee(): StockFee
     {
         return $this->fee;
     }
 
-    public function img()
+    public function img(): StockImg
     {
         return $this->img;
     }

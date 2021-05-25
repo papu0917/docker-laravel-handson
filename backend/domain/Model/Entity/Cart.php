@@ -14,25 +14,25 @@ class Cart
     private $stockId;
     private $userId;
 
-    public function __construct(CartId $cartId, CartOrderId $cartStockId, CartUserId $cartUserId)
+    public function __construct(CartId $cartId, CartStockId $cartStockId, CartUserId $cartUserId)
     {
         $this->id = $cartId;
         $this->stockId = $cartStockId;
         $this->userId = $cartUserId;
     }
 
-    public function id()
+    public function id(): CartId
     {
         return $this->id;
     }
 
-    public function stockId()
+    public function stockId(): CartStockId
     {
         return $this->stockId;
     }
 
-    public function userId()
+    public function userId(): CartUserId
     {
-        $this->userId;
+        return $this->userId;
     }
 }
