@@ -7,6 +7,7 @@ namespace Domain\Model\Entity;
 use Domain\Model\ValueObject\StockDetail;
 use Domain\Model\ValueObject\StockFee;
 use Domain\Model\ValueObject\StockId;
+use Domain\Model\ValueObject\StockImg;
 use Domain\Model\ValueObject\StockName;
 
 class Stock
@@ -15,13 +16,15 @@ class Stock
     private $name;
     private $detail;
     private $fee;
+    private $img;
 
-    public function __construct(StockId $stockId, StockName $stockName, StockDetail $stockDetail, StockFee $stockFee)
+    public function __construct(StockId $stockId, StockName $stockName, StockDetail $stockDetail, StockFee $stockFee, StockImg $stockImg)
     {
         $this->id = $stockId;
         $this->name = $stockName;
         $this->detail = $stockDetail;
         $this->fee = $stockFee;
+        $this->img = $stockImg;
     }
 
     public function id(): StockId
@@ -42,5 +45,10 @@ class Stock
     public function fee()
     {
         return $this->fee;
+    }
+
+    public function img()
+    {
+        return $this->img;
     }
 }
