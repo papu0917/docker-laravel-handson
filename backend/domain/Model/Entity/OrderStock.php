@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Domain\Model\Entity;
 
 use Domain\Model\ValueObject\OrderStockId;
-use Domain\Model\ValueObject\OrderStockOrderId;
-use Domain\Model\ValueObject\OrderStockStockId;
+use Domain\Model\ValueObject\OrderId;
+use Domain\Model\ValueObject\StockId;
 
 class OrderStock
 {
@@ -14,8 +14,11 @@ class OrderStock
     private $orderId;
     private $stockId;
 
-    public function __construct(OrderStockId $orderStockId, OrderStockOrderId $orderStockOrderId, OrderStockStockId $orderStockStockId)
-    {
+    public function __construct(
+        OrderStockId $orderStockId,
+        OrderId $orderStockOrderId,
+        StockId $orderStockStockId
+    ) {
         $this->id = $orderStockId;
         $this->orderId = $orderStockOrderId;
         $this->stockId = $orderStockStockId;
@@ -26,12 +29,12 @@ class OrderStock
         return $this->id;
     }
 
-    public function orderId(): OrderStockOrderId
+    public function orderId(): OrderId
     {
         return $this->orderId;
     }
 
-    public function stockId(): OrderStockStockId
+    public function stockId(): StockId
     {
         return $this->stockId;
     }

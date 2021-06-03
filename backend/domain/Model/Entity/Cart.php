@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Domain\Model\Entity;
 
 use Domain\Model\ValueObject\CartId;
-use Domain\Model\ValueObject\CartStockId;
-use Domain\Model\ValueObject\CartUserId;
+use Domain\Model\ValueObject\StockId;
+use Domain\Model\ValueObject\UserId;
 
 class Cart
 {
@@ -14,8 +14,11 @@ class Cart
     private $stockId;
     private $userId;
 
-    public function __construct(CartId $cartId, CartStockId $cartStockId, CartUserId $cartUserId)
-    {
+    public function __construct(
+        CartId $cartId,
+        StockId $cartStockId,
+        UserId $cartUserId
+    ) {
         $this->id = $cartId;
         $this->stockId = $cartStockId;
         $this->userId = $cartUserId;
@@ -26,12 +29,12 @@ class Cart
         return $this->id;
     }
 
-    public function stockId(): CartStockId
+    public function stockId(): StockId
     {
         return $this->stockId;
     }
 
-    public function userId(): CartUserId
+    public function userId(): UserId
     {
         return $this->userId;
     }

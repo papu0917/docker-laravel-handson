@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Domain\Model\ValueObject;
 
-
-class OrderName
+class UserAddres
 {
     private $value;
 
     public function __construct(string $value)
     {
-        if ($value === "") {
-            throw new Exception("名前を入力してください");
+        if (is_null($value)) {
+            throw new Exception("お届け先を入力してください");
         }
         $this->value = $value;
     }

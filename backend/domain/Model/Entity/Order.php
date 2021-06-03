@@ -11,7 +11,7 @@ use Domain\Model\ValueObject\OrderName;
 use Domain\Model\ValueObject\OrderPhone;
 use Domain\Model\ValueObject\OrderPostcode;
 use Domain\Model\ValueObject\OrderTotalPrices;
-use Domain\Model\ValueObject\OrderUserId;
+use Domain\Model\ValueObject\UserId;
 
 class Order
 {
@@ -24,8 +24,16 @@ class Order
     private $email;
     private $totalPrices;
 
-    public function __construct(OrderId $orderId, OrderUserId $orderUserId, OrderName $orderName, OrderAddres $orderAddres, OrderPostcode $orderPostcode, OrderPhone $orderPhone, OrderEmail $orderEmail, OrderTotalPrices $orderTotalPrices)
-    {
+    public function __construct(
+        OrderId $orderId,
+        ?UserId $orderUserId,
+        OrderName $orderName,
+        OrderAddres $orderAddres,
+        OrderPostcode $orderPostcode,
+        OrderPhone $orderPhone,
+        OrderEmail $orderEmail,
+        OrderTotalPrices $orderTotalPrices
+    ) {
         $this->id = $orderId;
         $this->userId = $orderUserId;
         $this->name = $orderName;
@@ -41,7 +49,7 @@ class Order
         return $this->id;
     }
 
-    public function userId(): OrderUserId
+    public function userId(): ?UserId
     {
         return $this->userId;
     }

@@ -18,8 +18,13 @@ class Stock
     private $fee;
     private $img;
 
-    public function __construct(StockId $stockId, StockName $stockName, StockDetail $stockDetail, StockFee $stockFee, StockImg $stockImg)
-    {
+    public function __construct(
+        ?StockId $stockId,
+        StockName $stockName,
+        StockDetail $stockDetail,
+        StockFee $stockFee,
+        ?StockImg $stockImg
+    ) {
         $this->id = $stockId;
         $this->name = $stockName;
         $this->detail = $stockDetail;
@@ -27,7 +32,7 @@ class Stock
         $this->img = $stockImg;
     }
 
-    public function id(): StockId
+    public function id(): ?StockId
     {
         return $this->id;
     }
@@ -47,7 +52,7 @@ class Stock
         return $this->fee;
     }
 
-    public function img(): StockImg
+    public function img(): ?StockImg
     {
         return $this->img;
     }
