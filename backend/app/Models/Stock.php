@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class Stock extends Model
 {
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = [];
 
     public static $rules = array(
         'name' => 'required',

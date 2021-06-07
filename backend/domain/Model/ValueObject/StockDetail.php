@@ -10,7 +10,7 @@ class StockDetail
 
     public function __construct(string $value)
     {
-        if (is_null($value)) {
+        if ($value === "") {
             throw new Exception("コメントを入力してください");
         }
         $this->value = $value;

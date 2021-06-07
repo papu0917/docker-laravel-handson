@@ -22,7 +22,12 @@
                                         <p class="card-text">{{ $stock->detail }}</p>
                                     </div>
                                 </div>
+                                <div>
+                                    <a href="{{ action('Admin\ShopController@edit', ['id' => $stock->id]) }}"><button
+                                            type="button"> 編集</a></button>
+                                </div>
                             </div>
+
                         @endforeach
                     </div>
                     <div class="text-center" style="width: 200px;margin: 20px auto;">

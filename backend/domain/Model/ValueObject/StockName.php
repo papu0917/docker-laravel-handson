@@ -10,7 +10,7 @@ class StockName
 
     public function __construct(string $value)
     {
-        if (is_null($value)) {
+        if ($value === "") {
             throw new Exception("商品名を入力してください");
         }
         $this->value = $value;
