@@ -29,11 +29,21 @@ class ShopController extends Controller
 
     public function store(Request $request, StockRepository $stockRepository)
     {
+        if ($file = $request->imgpath) {
+            //保存するファイルに名前をつける    
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            //Laravel直下のpublicディレクトリに新フォルダをつくり保存する
+            $target_path = public_path('/image/');
+            $file->move($target_path, $fileName);
+        } else {
+            //画像が登録されなかった時はから文字をいれる
+            $name = "";
+        }
 
         $stockName = new StockName($request->name);
         $stockDetail = new StockDetail($request->detail);
         $stockFee = new StockFee($request->fee);
-        $stockImg = new StockImg($request->imgpath);
+        $stockImg = new StockImg($fileName);
         $stock = new StockEntity(
             null,
             $stockName,
