@@ -12,16 +12,31 @@ class StockRepository
 {
     public function save(StockEntity $stock)
     {
+        $saveData['id'] = ($stock->id()) ? $stock->id()->value() : null;
+        $saveData['name'] = $stock->name()->value();
+        $saveData['detail'] = $stock->detail()->value();
+        $saveData['fee'] = $stock->fee()->value();
+        $saveData['imgpath'] = $stock->img()->value();
+        $newStock = new Stock;
+
+        return $newStock->fill($saveData)->save();
+    }
+
+    public function update(StockEntity $stock)
+    {
+        $saveData['id'] = $stock->id()->value();
         $saveData['name'] = $stock->name()->value();
         $saveData['detail'] = $stock->detail()->value();
         $saveData['fee'] = $stock->fee()->value();
         $saveData['imgpath'] = "";
+        $updatedStock = Stock::find($stock->id()->value());
 
-        $newStock = new Stock;
-        return $newStock->fill($saveData)->save();
+        return $updatedStock->update($saveData);
     }
 
     public function findById(StockId $stockId)
     {
+        $findById = Stock::find($stockId->value());
+        return $findById;
     }
 }

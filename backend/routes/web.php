@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/home', 'Admin\HomeController@index')->name('admin.home');
     Route::get('/store', 'Admin\ShopController@create')->name('admin.store');
     Route::post('/store', 'Admin\ShopController@store')->name('admin.store');
+    Route::get('/edit', 'Admin\ShopController@edit')->name('admin.edit');
+    Route::post('/edit', 'Admin\ShopController@update')->name('admin.update');
 });
 
 Auth::routes();

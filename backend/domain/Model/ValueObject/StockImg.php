@@ -8,15 +8,15 @@ class StockImg
 {
     private $value;
 
-    public function __construct(string $value)
+    public function __construct($value)
     {
-        if (is_null($value)) {
+        if ($value === "") {
             throw new Exception("画像を選択してください");
         }
         $this->value = $value;
     }
 
-    public function value(): string
+    public function value()
     {
         return $this->value;
     }
