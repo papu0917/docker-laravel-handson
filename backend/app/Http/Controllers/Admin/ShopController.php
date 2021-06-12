@@ -29,33 +29,28 @@ class ShopController extends Controller
 
     public function store(Request $request, StockRepository $stockRepository)
     {
-        if ($file = $request->imgpath) {
-            //保存するファイルに名前をつける    
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
-            //Laravel直下のpublicディレクトリに新フォルダをつくり保存する
-            $target_path = public_path('/image/');
-            $file->move($target_path, $fileName);
+        if ($request->file('imgpath')) {
+            //保存するファイルに名前をつける
+            $path = $request->file('imgpath')->store('public/image');
+            $stockImg = new StockImg($path);
         } else {
-            //画像が登録されなかった時はから文字をいれる
-            $name = "";
+            $stockImg = null;
         }
 
         $stockName = new StockName($request->name);
         $stockDetail = new StockDetail($request->detail);
         $stockFee = new StockFee($request->fee);
-        $stockImg = new StockImg($fileName);
         $stock = new StockEntity(
             null,
             $stockName,
             $stockDetail,
             $stockFee,
             $stockImg,
-
         );
 
         $stockRepository->save($stock);
 
-        return view('admin.store');
+        return redirect('admin/shop');
     }
 
     public function edit(Request $request, StockRepository $stockRepository)
@@ -71,12 +66,32 @@ class ShopController extends Controller
 
     public function update(Request $request, StockRepository $stockRepository)
     {
+        // dd($request);
+        // if (false) {
+        //     dd('if');
+        // } elseif (null) {
+        //     dd('elseif');
+        // } else {
+        //     dd('else');
+        // }
 
+        $formData = $request->all();
+        if ($request->remove == 'true') {
+            $imgpath = null;
+            dd($imgpath);
+        } elseif ($request->file('imgpath')) {
+            $path = $request->file('imgpath')->store('public/image');
+            $imgpath = basename($path);
+            // dd($imgpath);
+        }
+
+
+        // dd('hello');
         $stockId = new StockId($request->id);
         $stockName = new StockName($request->name);
         $stockDetail = new StockDetail($request->detail);
         $stockFee = new StockFee($request->fee);
-        $stockImg = null;
+        $stockImg = new StockImg($imgpath);
         $stock = new StockEntity(
             $stockId,
             $stockName,
@@ -84,6 +99,8 @@ class ShopController extends Controller
             $stockFee,
             $stockImg,
         );
+
+        // dd($stock);
         $stockRepository->update($stock);
 
         return redirect('admin/shop');
