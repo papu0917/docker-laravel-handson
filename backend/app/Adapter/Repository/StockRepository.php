@@ -7,6 +7,7 @@ namespace App\Adapter\Repository;
 use App\Models\Stock;
 use Domain\Model\Entity\Stock as StockEntity;
 use Domain\Model\ValueObject\StockId;
+use Domain\Model\ValueObject\StockImg;
 
 class StockRepository
 {
@@ -16,7 +17,7 @@ class StockRepository
         $saveData['name'] = $stock->name()->value();
         $saveData['detail'] = $stock->detail()->value();
         $saveData['fee'] = $stock->fee()->value();
-        $saveData['imgpath'] = $stock->img()->value();
+        $saveData['imgpath'] = $stock->img()->baseName();
         $newStock = new Stock;
 
         return $newStock->fill($saveData)->save();
@@ -28,7 +29,7 @@ class StockRepository
         $saveData['name'] = $stock->name()->value();
         $saveData['detail'] = $stock->detail()->value();
         $saveData['fee'] = $stock->fee()->value();
-        $saveData['imgpath'] = "";
+        $saveData['imgpath'] = $stock->img()->baseName();
         $updatedStock = Stock::find($stock->id()->value());
 
         return $updatedStock->update($saveData);
@@ -37,6 +38,11 @@ class StockRepository
     public function findById(StockId $stockId)
     {
         $findById = Stock::find($stockId->value());
+
         return $findById;
+    }
+
+    public function findAll()
+    {
     }
 }

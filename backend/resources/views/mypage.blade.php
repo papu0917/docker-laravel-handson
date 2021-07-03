@@ -46,7 +46,7 @@
                     </div>
                     @foreach ($order->stocks as $stock)
                         <div class="">
-                            <img src="/image/{{ $stock->imgpath }}" class="image">
+                            <img src="{{ asset('storage/image/' . $stock->imgpath) }}" class="image">
                             <div class="commodity-name">
                                 <p>{{ $stock->name }}</p>
                                 <div class="reorder">

@@ -87,7 +87,7 @@
                             </li>
                             {{-- 追加 --}}
                             <a href="{{ url('/mycart') }}">
-                                <img src="{{ asset('image/cart.png') }}" class="cart" width="10%" height="30">
+                                <img src="storage/image/cart.png" class="cart" width="10%" height="30">
                             </a>
                         @endguest
 

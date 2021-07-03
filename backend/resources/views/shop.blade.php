@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">
-        <img src="/image/e_sale_460_1.jpg">
-    </div>
+    <div class="top-image"><img src="storage/image/e_sale_460_1.jpg"></div>
     <div class="container-fluid">
         <div class="">
             <div class="mx-auto" style="max-width:1200px">
@@ -13,8 +11,8 @@
                         @foreach ($stocks as $stock)
                             <div class="col-xs-6 col-sm-4 col-md-3" style="padding: 24px 8px;">
                                 <div class="card" style="width:17rem;">
-                                    <img src="/image/{{ $stock->imgpath }}" alt="" class="bd-placeholder-img card-img-top"
-                                        width="100%" height="180">
+                                    <img src="{{ asset('storage/image/' . $stock->imgpath) }}" alt=""
+                                        class="bd-placeholder-img card-img-top" width="100%" height="180">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $stock->name }}</h5>
                                         <p class="text-danger card-price">{{ number_format($stock->fee) }}円</p>
