@@ -12,7 +12,6 @@ use Domain\Model\ValueObject\StockFee;
 use Domain\Model\ValueObject\StockId;
 use Domain\Model\ValueObject\StockImg;
 use Illuminate\Http\Request;
-use Laravel\Ui\Presets\React;
 
 class ShopController extends Controller
 {
@@ -30,7 +29,6 @@ class ShopController extends Controller
     public function store(Request $request, StockRepository $stockRepository)
     {
         if ($request->file('imgpath')) {
-            //保存するファイルに名前をつける
             $path = $request->file('imgpath')->store('public/image');
             $stockImg = new StockImg($path);
         } else {
@@ -56,36 +54,20 @@ class ShopController extends Controller
     public function edit(Request $request, StockRepository $stockRepository)
     {
         $stockId = new StockId($request->id);
+
         $stockInfo = $stockRepository->findById($stockId);
         if (empty($stockInfo)) {
             abort(404);
         }
-
         return view('admin.edit', compact('stockInfo'));
     }
 
     public function update(Request $request, StockRepository $stockRepository)
     {
-        // dd($request);
-        // if (false) {
-        //     dd('if');
-        // } elseif (null) {
-        //     dd('elseif');
-        // } else {
-        //     dd('else');
-        // }
-
-        $formData = $request->all();
-        if ($request->remove == 'true') {
-            $imgpath = null;
-            dd($imgpath);
-        } elseif ($request->file('imgpath')) {
+        if ($request->file('imgpath')) {
             $path = $request->file('imgpath')->store('public/image');
             $imgpath = basename($path);
-            // dd($imgpath);
         }
-
-
         // dd('hello');
         $stockId = new StockId($request->id);
         $stockName = new StockName($request->name);

@@ -7,6 +7,7 @@ namespace App\Adapter\Repository;
 use App\Models\Stock;
 use Domain\Model\Entity\Stock as StockEntity;
 use Domain\Model\ValueObject\StockId;
+use Domain\Model\ValueObject\StockImg;
 
 class StockRepository
 {
@@ -36,11 +37,12 @@ class StockRepository
 
     public function findById(StockId $stockId)
     {
-        $stock = Stock::find($stockId->value());
-        return $stock;
+        $findById = Stock::find($stockId->value());
+
+        return $findById;
     }
 
-    public function findAll(StockId $stockId)
+    public function findAll()
     {
     }
 }

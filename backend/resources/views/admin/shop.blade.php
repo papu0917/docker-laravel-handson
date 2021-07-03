@@ -1,6 +1,4 @@
 @extends('layouts.app_admin')
-
-
 @section('content')
     <div class="text-center">
         {{-- <img src="/image/e_sale_460_1.jpg"> --}}
